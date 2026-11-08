@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вопрос</title>
+    <style>
+        body {
+            background-color: #ffe6eb;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 100px;
+        }
+        h1 {
+            color: #d81b60;
+        }
+        .buttons {
+            margin-top: 30px;
+            position: relative;
+            height: 100px;
+        }
+        button {
+            padding: 12px 24px;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        #yesBtn {
+            background-color: #4CAF50;
+            color: white;
+            margin-right: 20px;
+        }
+        #noBtn {
+            background-color: #f44336;
+            color: white;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+
+    <h2 id="question">Ты сегодня кушала?</h2>
+    
+    <div class="buttons">
+        <button id="yesBtn" onclick="sayYes()">ДА</button>
+        <button id="noBtn" onmouseover="moveButton()" ontouchstart="moveButton()" onclick="moveButton()">НЕТ</button>
+    </div>
+
+    <script>
+        const messages = [
+            "Уверен?",
+            "Подумай еще раз!",
+            "Ну ты чего?",
+            "Так не честно!",
+            "Нажми Да!",
+            "Последний шанс!"
+        ];
+        let msgIndex = 0;
+
+        function moveButton() {
+            const btn = document.getElementById('noBtn');
+            const x = Math.random() * (window.innerWidth - 150);
+            const y = Math.random() * (window.innerHeight - 150);
+            
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
+
+            if (msgIndex < messages.length) {
+                document.getElementById('question').innerText = messages[msgIndex];
+                msgIndex++;
+            }
+        }
+
+        function sayYes() {
+            document.body.innerHTML = "<h1>Умнчка ❤️</h1>";
+        }
+    </script>
+</body>
+</html>
